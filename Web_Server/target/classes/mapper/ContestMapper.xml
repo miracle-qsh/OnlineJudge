@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newoj.dao.ContestMapper">
+  <resultMap id="BaseResultMap" type="com.newoj.bean.Contest">
+    <id column="con_id" jdbcType="INTEGER" property="conId" />
+    <result column="con_name" jdbcType="VARCHAR" property="conName" />
+    <result column="con_starttime" jdbcType="TIMESTAMP" property="conStarttime" />
+    <result column="con_endtime" jdbcType="TIMESTAMP" property="conEndtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    con_id, con_name, con_starttime, con_endtime
+  </sql>
+  <select id="selectByExample" parameterType="com.newoj.bean.ContestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from contest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contest
+    where con_id = #{conId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contest
+    where con_id = #{conId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newoj.bean.ContestExample">
+    delete from contest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newoj.bean.Contest">
+    insert into contest (con_id, con_name, con_starttime, 
+      con_endtime)
+    values (#{conId,jdbcType=INTEGER}, #{conName,jdbcType=VARCHAR}, #{conStarttime,jdbcType=TIMESTAMP}, 
+      #{conEndtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newoj.bean.Contest">
+    insert into contest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        con_id,
+      </if>
+      <if test="conName != null">
+        con_name,
+      </if>
+      <if test="conStarttime != null">
+        con_starttime,
+      </if>
+      <if test="conEndtime != null">
+        con_endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        #{conId,jdbcType=INTEGER},
+      </if>
+      <if test="conName != null">
+        #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conStarttime != null">
+        #{conStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conEndtime != null">
+        #{conEndtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newoj.bean.ContestExample" resultType="java.lang.Long">
+    select count(*) from contest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update contest
+    <set>
+      <if test="record.conId != null">
+        con_id = #{record.conId,jdbcType=INTEGER},
+      </if>
+      <if test="record.conName != null">
+        con_name = #{record.conName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conStarttime != null">
+        con_starttime = #{record.conStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.conEndtime != null">
+        con_endtime = #{record.conEndtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update contest
+    set con_id = #{record.conId,jdbcType=INTEGER},
+      con_name = #{record.conName,jdbcType=VARCHAR},
+      con_starttime = #{record.conStarttime,jdbcType=TIMESTAMP},
+      con_endtime = #{record.conEndtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newoj.bean.Contest">
+    update contest
+    <set>
+      <if test="conName != null">
+        con_name = #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conStarttime != null">
+        con_starttime = #{conStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conEndtime != null">
+        con_endtime = #{conEndtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where con_id = #{conId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newoj.bean.Contest">
+    update contest
+    set con_name = #{conName,jdbcType=VARCHAR},
+      con_starttime = #{conStarttime,jdbcType=TIMESTAMP},
+      con_endtime = #{conEndtime,jdbcType=TIMESTAMP}
+    where con_id = #{conId,jdbcType=INTEGER}
+  </update>
+</mapper>

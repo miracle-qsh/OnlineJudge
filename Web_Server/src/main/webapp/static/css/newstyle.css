@@ -1,0 +1,131 @@
+@font-face{
+	font-family: newoj;
+	src:url('static/font/newoj.ttf');
+}
+*{
+	border-radius: 7px !important;
+	outline: none !important;
+	outline-color: rgba(255,255,255,0) !important;
+}
+body{
+	background: rgb(240,240,244);
+}
+.newbtline{
+	box-shadow:2px 2px 8px rgb(201,201,201);
+}
+.newh1{
+	color: rgb(93,137,233) !important;
+	font-size: 20px !important;
+	font-weight: 200 !important;
+	font-family: 'newoj' !important;
+}
+.subpad{
+	padding-top: 10px;
+	background: white;
+}
+.logotitle{
+	font-size: 30px;
+	font-weight: 100;
+	color: rgb(93,137,233) !important;
+	font-family: 'newoj' !important;
+}
+.logomgn{
+	margin-right: 15px !important;
+}
+.newnavlink{
+	color: rgb(127,114,171) !important;
+}
+.newlr{
+	color: rgb(5,37,159) !important;
+}
+.newp{
+	font-size: 15px !important;
+	font-weight: 100;
+	color: rgb(96,96,96) !important;
+	font-family: 'newoj' !important;
+}
+.toright{
+	float: right;
+}
+.newh2{
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	font-family: 'newoj' !important;
+}
+.flo{
+	display: inline-block;
+}
+.strp{
+	font-size: 18px !important;
+	font-weight: 900 !important;
+}
+.toleft{
+	float: left;
+}
+.nopad{
+	padding-top: 0 !important;
+}
+.nomag{
+	margin: 0 !important;
+}
+
+@keyframes firstwindow{
+	0%{margin-top: 1000px;}
+	70%{margin-top: -10px;}
+	100%{margin-top: 0px;}
+}
+@keyframes secondwindow{
+	0%{margin-left: 1000px;}
+	70%{margin-left: -10px;}
+	100%{margin-left: 0px;}
+}
+
+.firstwindow{
+	animation: firstwindow 1.5s !important;
+}
+.secondwindow{
+	animation: secondwindow 1.3s !important;
+}
+.tocenter{
+	margin: 0px auto;display: table !important;
+}
+.newh3{
+	color: rgb(93,137,233) !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	font-family: 'newoj' !important;
+}
+.tosmall{
+	
+	margin: 10px;
+	padding: 5px !important;
+	color: rgb(0,123,255) !important;
+}
+.marl{
+	padding: 5px !important;
+	margin: 1px !important;
+}
+.procolor{
+	color: rgb(0,123,255) !important;
+	text-decoration: none !important;
+}
+.proinf{
+	font-family: none !important;
+	font-size: 15px !important;
+	font-weight: 400;
+}
+pre{
+white-space: pre-wrap;           /* css-3 */
+white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+white-space: -pre-wrap;          /* Opera 4-6 */
+white-space: -o-pre-wrap;        /* Opera 7 */
+word-wrap: break-word;           /* Internet Explorer 5.5+ */
+}
+.noborder{
+	border: none;
+}
+.nactive{
+	border:none !important;
+	color:white !important;
+	background: rgb(0,123,255) !important;
+}

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newoj.dao.ProblemMapper">
+  <resultMap id="BaseResultMap" type="com.newoj.bean.Problem">
+    <id column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="pro_title" jdbcType="VARCHAR" property="proTitle" />
+    <result column="pro_timelim" jdbcType="INTEGER" property="proTimelim" />
+    <result column="pro_memlim" jdbcType="INTEGER" property="proMemlim" />
+    <result column="pro_info" jdbcType="VARCHAR" property="proInfo" />
+    <result column="pro_input" jdbcType="VARCHAR" property="proInput" />
+    <result column="pro_output" jdbcType="VARCHAR" property="proOutput" />
+    <result column="pro_sinput" jdbcType="VARCHAR" property="proSinput" />
+    <result column="pro_soutput" jdbcType="VARCHAR" property="proSoutput" />
+    <result column="pro_hint" jdbcType="VARCHAR" property="proHint" />
+    <result column="pro_authorid" jdbcType="INTEGER" property="proAuthorid" />
+    <result column="pro_acnum" jdbcType="INTEGER" property="proAcnum" />
+    <result column="pro_totalnum" jdbcType="INTEGER" property="proTotalnum" />
+    <result column="pro_data" jdbcType="VARCHAR" property="proData" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pro_id, pro_title, pro_timelim, pro_memlim, pro_info, pro_input, pro_output, pro_sinput, 
+    pro_soutput, pro_hint, pro_authorid, pro_acnum, pro_totalnum, pro_data
+  </sql>
+  <select id="selectByExample" parameterType="com.newoj.bean.ProblemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from problem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from problem
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from problem
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newoj.bean.ProblemExample">
+    delete from problem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newoj.bean.Problem">
+    insert into problem (pro_id, pro_title, pro_timelim, 
+      pro_memlim, pro_info, pro_input, 
+      pro_output, pro_sinput, pro_soutput, 
+      pro_hint, pro_authorid, pro_acnum, 
+      pro_totalnum, pro_data)
+    values (#{proId,jdbcType=INTEGER}, #{proTitle,jdbcType=VARCHAR}, #{proTimelim,jdbcType=INTEGER}, 
+      #{proMemlim,jdbcType=INTEGER}, #{proInfo,jdbcType=VARCHAR}, #{proInput,jdbcType=VARCHAR}, 
+      #{proOutput,jdbcType=VARCHAR}, #{proSinput,jdbcType=VARCHAR}, #{proSoutput,jdbcType=VARCHAR}, 
+      #{proHint,jdbcType=VARCHAR}, #{proAuthorid,jdbcType=INTEGER}, #{proAcnum,jdbcType=INTEGER}, 
+      #{proTotalnum,jdbcType=INTEGER}, #{proData,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newoj.bean.Problem">
+    insert into problem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        pro_id,
+      </if>
+      <if test="proTitle != null">
+        pro_title,
+      </if>
+      <if test="proTimelim != null">
+        pro_timelim,
+      </if>
+      <if test="proMemlim != null">
+        pro_memlim,
+      </if>
+      <if test="proInfo != null">
+        pro_info,
+      </if>
+      <if test="proInput != null">
+        pro_input,
+      </if>
+      <if test="proOutput != null">
+        pro_output,
+      </if>
+      <if test="proSinput != null">
+        pro_sinput,
+      </if>
+      <if test="proSoutput != null">
+        pro_soutput,
+      </if>
+      <if test="proHint != null">
+        pro_hint,
+      </if>
+      <if test="proAuthorid != null">
+        pro_authorid,
+      </if>
+      <if test="proAcnum != null">
+        pro_acnum,
+      </if>
+      <if test="proTotalnum != null">
+        pro_totalnum,
+      </if>
+      <if test="proData != null">
+        pro_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="proTitle != null">
+        #{proTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="proTimelim != null">
+        #{proTimelim,jdbcType=INTEGER},
+      </if>
+      <if test="proMemlim != null">
+        #{proMemlim,jdbcType=INTEGER},
+      </if>
+      <if test="proInfo != null">
+        #{proInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="proInput != null">
+        #{proInput,jdbcType=VARCHAR},
+      </if>
+      <if test="proOutput != null">
+        #{proOutput,jdbcType=VARCHAR},
+      </if>
+      <if test="proSinput != null">
+        #{proSinput,jdbcType=VARCHAR},
+      </if>
+      <if test="proSoutput != null">
+        #{proSoutput,jdbcType=VARCHAR},
+      </if>
+      <if test="proHint != null">
+        #{proHint,jdbcType=VARCHAR},
+      </if>
+      <if test="proAuthorid != null">
+        #{proAuthorid,jdbcType=INTEGER},
+      </if>
+      <if test="proAcnum != null">
+        #{proAcnum,jdbcType=INTEGER},
+      </if>
+      <if test="proTotalnum != null">
+        #{proTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="proData != null">
+        #{proData,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newoj.bean.ProblemExample" resultType="java.lang.Long">
+    select count(*) from problem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update problem
+    <set>
+      <if test="record.proId != null">
+        pro_id = #{record.proId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proTitle != null">
+        pro_title = #{record.proTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proTimelim != null">
+        pro_timelim = #{record.proTimelim,jdbcType=INTEGER},
+      </if>
+      <if test="record.proMemlim != null">
+        pro_memlim = #{record.proMemlim,jdbcType=INTEGER},
+      </if>
+      <if test="record.proInfo != null">
+        pro_info = #{record.proInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proInput != null">
+        pro_input = #{record.proInput,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proOutput != null">
+        pro_output = #{record.proOutput,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proSinput != null">
+        pro_sinput = #{record.proSinput,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proSoutput != null">
+        pro_soutput = #{record.proSoutput,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proHint != null">
+        pro_hint = #{record.proHint,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proAuthorid != null">
+        pro_authorid = #{record.proAuthorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.proAcnum != null">
+        pro_acnum = #{record.proAcnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.proTotalnum != null">
+        pro_totalnum = #{record.proTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.proData != null">
+        pro_data = #{record.proData,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update problem
+    set pro_id = #{record.proId,jdbcType=INTEGER},
+      pro_title = #{record.proTitle,jdbcType=VARCHAR},
+      pro_timelim = #{record.proTimelim,jdbcType=INTEGER},
+      pro_memlim = #{record.proMemlim,jdbcType=INTEGER},
+      pro_info = #{record.proInfo,jdbcType=VARCHAR},
+      pro_input = #{record.proInput,jdbcType=VARCHAR},
+      pro_output = #{record.proOutput,jdbcType=VARCHAR},
+      pro_sinput = #{record.proSinput,jdbcType=VARCHAR},
+      pro_soutput = #{record.proSoutput,jdbcType=VARCHAR},
+      pro_hint = #{record.proHint,jdbcType=VARCHAR},
+      pro_authorid = #{record.proAuthorid,jdbcType=INTEGER},
+      pro_acnum = #{record.proAcnum,jdbcType=INTEGER},
+      pro_totalnum = #{record.proTotalnum,jdbcType=INTEGER},
+      pro_data = #{record.proData,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newoj.bean.Problem">
+    update problem
+    <set>
+      <if test="proTitle != null">
+        pro_title = #{proTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="proTimelim != null">
+        pro_timelim = #{proTimelim,jdbcType=INTEGER},
+      </if>
+      <if test="proMemlim != null">
+        pro_memlim = #{proMemlim,jdbcType=INTEGER},
+      </if>
+      <if test="proInfo != null">
+        pro_info = #{proInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="proInput != null">
+        pro_input = #{proInput,jdbcType=VARCHAR},
+      </if>
+      <if test="proOutput != null">
+        pro_output = #{proOutput,jdbcType=VARCHAR},
+      </if>
+      <if test="proSinput != null">
+        pro_sinput = #{proSinput,jdbcType=VARCHAR},
+      </if>
+      <if test="proSoutput != null">
+        pro_soutput = #{proSoutput,jdbcType=VARCHAR},
+      </if>
+      <if test="proHint != null">
+        pro_hint = #{proHint,jdbcType=VARCHAR},
+      </if>
+      <if test="proAuthorid != null">
+        pro_authorid = #{proAuthorid,jdbcType=INTEGER},
+      </if>
+      <if test="proAcnum != null">
+        pro_acnum = #{proAcnum,jdbcType=INTEGER},
+      </if>
+      <if test="proTotalnum != null">
+        pro_totalnum = #{proTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="proData != null">
+        pro_data = #{proData,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newoj.bean.Problem">
+    update problem
+    set pro_title = #{proTitle,jdbcType=VARCHAR},
+      pro_timelim = #{proTimelim,jdbcType=INTEGER},
+      pro_memlim = #{proMemlim,jdbcType=INTEGER},
+      pro_info = #{proInfo,jdbcType=VARCHAR},
+      pro_input = #{proInput,jdbcType=VARCHAR},
+      pro_output = #{proOutput,jdbcType=VARCHAR},
+      pro_sinput = #{proSinput,jdbcType=VARCHAR},
+      pro_soutput = #{proSoutput,jdbcType=VARCHAR},
+      pro_hint = #{proHint,jdbcType=VARCHAR},
+      pro_authorid = #{proAuthorid,jdbcType=INTEGER},
+      pro_acnum = #{proAcnum,jdbcType=INTEGER},
+      pro_totalnum = #{proTotalnum,jdbcType=INTEGER},
+      pro_data = #{proData,jdbcType=VARCHAR}
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </update>
+</mapper>
