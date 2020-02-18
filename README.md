@@ -57,31 +57,31 @@
 
 #### 题目管理（增删改查）
 
-![img](https://i.loli.net/2020/02/17/jyQGzDSX21UumPh.png)
+![题目管理.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E9%A2%98%E7%9B%AE%E7%AE%A1%E7%90%86.png?raw=true)
 
 #### 比赛管理（增删改查）
 
-![img](https://i.loli.net/2020/02/17/5FxqTLGwU9RW6Sm.png)
+![比赛管理.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E6%AF%94%E8%B5%9B%E7%AE%A1%E7%90%86.png?raw=true)
 
 ### 用户权限
 
 #### 查看题库
 
-![img](https://i.loli.net/2020/02/17/fxjkCnH4oIeLuc9.png)
+![查看题目.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E6%9F%A5%E7%9C%8B%E9%A2%98%E7%9B%AE.png?raw=true)
 
 #### 参与比赛
 
-![img](https://i.loli.net/2020/02/17/pQFEA5ic8Hnu7Ul.png)
+![img](https://raw.githubusercontent.com/miracle-qsh/OnlineJudge/master/imgs/%E5%8F%82%E5%8A%A0%E6%AF%94%E8%B5%9B.png)
 
 #### 题目提交
 
-![img](https://i.loli.net/2020/02/17/SX5PQW1LOMkzTxV.png)
+![提交题目.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E6%8F%90%E4%BA%A4%E9%A2%98%E7%9B%AE.png?raw=true)
 
-![img](https://i.loli.net/2020/02/17/oxZjGXUFeERNAgy.png)
+![提交题目2.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E6%8F%90%E4%BA%A4%E9%A2%98%E7%9B%AE2.png?raw=true)
 
 #### 排名系统
 
-![img](https://i.loli.net/2020/02/17/E8TUH6YinmV2b3p.png)
+![排名系统.png](https://github.com/miracle-qsh/OnlineJudge/blob/master/imgs/%E6%8E%92%E5%90%8D%E7%B3%BB%E7%BB%9F.png?raw=true)
 
 ## <span id="6">待办</span>
 
