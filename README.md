@@ -10,7 +10,7 @@
 
 ## <span id="1">简介</span>
 
-​		本系统是旨在为 **ACM（ACM-ICPC 国际大学生程序设计竞赛）**选手提供高质量、稳定练习平台的一款 **Java Web** 应用。本系统使用 **SSM框架（Spring + SpringMVC + Mybatis）**完成前后端的交互，评测机部分为 **Python** 实现，运行环境为 **Windows** ，目前支持的编译语言为 **C++**。
+​		本系统是旨在为 **ACM（ACM-ICPC 国际大学生程序设计竞赛）** 选手提供高质量、稳定练习平台的一款 **Java Web** 应用。本系统使用 **SSM框架（Spring + SpringMVC + Mybatis）** 完成前后端的交互，评测机部分为 **Python** 实现，运行环境为 **Windows** ，目前支持的编译语言为 **C++**。
 
 ## <span id="2">功能</span>
 
